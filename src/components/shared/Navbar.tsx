@@ -20,7 +20,7 @@ const Navbar = () => {
           {/* Logo and Location */}
           <div className="flex items-center space-x-6">
             <Link href="/" className="text-2xl font-bold text-orange-600 hover:text-orange-700 transition-colors cursor-pointer">
-              FoodHub
+              BhojanNepal
             </Link>
             {/* <div className="hidden lg:flex items-center space-x-2 text-sm text-gray-600 bg-gray-50 px-4 py-2 rounded-full border border-gray-200">
               <MapPin className="h-4 w-4 text-orange-500" />
@@ -39,8 +39,8 @@ const Navbar = () => {
             {isAuthenticated ? (
               <>
                 {/* Orders Link */}
-                <Link 
-                  href="/orders" 
+                <Link
+                  href="/orders"
                   className="text-gray-600 hover:text-orange-600 px-4 py-2 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 cursor-pointer"
                 >
                   My Orders
@@ -85,8 +85,8 @@ const Navbar = () => {
           <div className="md:hidden flex items-center space-x-3">
             {isAuthenticated && (
               <>
-                <Link 
-                  href="/orders" 
+                <Link
+                  href="/orders"
                   className="text-gray-600 hover:text-orange-600 px-3 py-2 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 cursor-pointer"
                 >
                   Orders

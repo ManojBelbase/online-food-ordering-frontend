@@ -31,7 +31,7 @@ interface OrdersResponse {
 const getStatusColor = (status: string) => {
   switch (status) {
     case "pending":
-      return "bg-yellow-100 text-yellow-800 border-yellow-200"; 
+      return "bg-yellow-100 text-yellow-800 border-yellow-200";
     case "accepted":
       return "bg-blue-100 text-blue-800 border-blue-200";
     case "preparing":
@@ -50,7 +50,7 @@ const getStatusColor = (status: string) => {
 const OrdersPage = () => {
   const { isAuthenticated } = useAuthGuard();
   const [activeTab, setActiveTab] = useState<'all' | 'pending' | 'accepted' | 'preparing' | 'ready' | 'completed' | 'cancelled'>('all');
-  
+
   // Convert tab to API status parameter
   const getStatusFilter = (tab: string) => {
     switch (tab) {
@@ -75,26 +75,26 @@ const OrdersPage = () => {
   const { data: ordersResponse, isLoading, error, refetch } = useUserOrders({
     status: getStatusFilter(activeTab)
   });
-  
+
   // Get order counts from backend
   const { data: orderCountsResponse } = useUserOrderCounts();
-  
+
   const orders = useMemo(() => {
     if (!ordersResponse?.data || !Array.isArray(ordersResponse.data)) {
       return [];
     }
     return ordersResponse.data;
   }, [ordersResponse]);
-  
+
   const pagination = useMemo(() => {
     if (!ordersResponse) return undefined;
     return (ordersResponse as OrdersResponse)?.pagination;
   }, [ordersResponse]);
-  
+
   // Get counts for each tab from backend
   const getTabCount = (tab: string) => {
     if (!orderCountsResponse?.data) return 0;
-    
+
     switch (tab) {
       case 'all':
         return orderCountsResponse.data.total;
@@ -114,7 +114,7 @@ const OrdersPage = () => {
         return 0;
     }
   };
-  
+
   const [refreshing, setRefreshing] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -127,17 +127,17 @@ const OrdersPage = () => {
   // Smart auto-refresh: only refresh if there are active orders
   useEffect(() => {
     if (!Array.isArray(orders) || orders.length === 0) return;
-    
+
     // Get active statuses dynamically from the API response
-    const activeStatuses = orderCountsResponse?.data?.byStatus ? 
-      Object.keys(orderCountsResponse.data.byStatus).filter(status => 
+    const activeStatuses = orderCountsResponse?.data?.byStatus ?
+      Object.keys(orderCountsResponse.data.byStatus).filter(status =>
         status !== 'cancelled' && orderCountsResponse.data.byStatus[status as keyof typeof orderCountsResponse.data.byStatus] > 0
       ) : ['pending', 'accepted', 'preparing', 'ready'];
-    
-    const hasActiveOrders = orders.some(order => 
+
+    const hasActiveOrders = orders.some(order =>
       order && order.orderStatus && activeStatuses.includes(order.orderStatus)
     );
-    
+
     // Only auto-refresh if there are active orders
     if (hasActiveOrders) {
       const interval = setInterval(() => {
@@ -228,8 +228,8 @@ const OrdersPage = () => {
               <h1 className="text-2xl font-bold text-gray-900 mb-2">My Orders</h1>
               <p className="text-gray-600">Track your orders and view order history</p>
             </div>
-            <Button 
-              onClick={handleRefresh} 
+            <Button
+              onClick={handleRefresh}
               disabled={refreshing}
               variant="outline"
               size="sm"
@@ -256,11 +256,10 @@ const OrdersPage = () => {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                  activeTab === tab.key
+                className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === tab.key
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {tab.label}
                 <span className="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
@@ -292,11 +291,11 @@ const OrdersPage = () => {
                       </p>
                       {order.restaurantId && (
                         <p className="text-xs text-gray-400 mt-1">
-                          {typeof order.restaurantId === 'string' 
-                            ? order.restaurantId 
+                          {typeof order.restaurantId === 'string'
+                            ? order.restaurantId
                             : order.restaurantId.restaurantName || 'Unknown Restaurant'
-                          } • {typeof order.restaurantId === 'string' 
-                            ? order.restaurantId 
+                          } • {typeof order.restaurantId === 'string'
+                            ? order.restaurantId
                             : order.restaurantId.cuisineType || 'Unknown Cuisine'
                           }
                         </p>
@@ -307,7 +306,7 @@ const OrdersPage = () => {
                     </Badge>
                   </div>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0">
                   {/* Order Items */}
                   <div className="mb-4">
@@ -315,7 +314,7 @@ const OrdersPage = () => {
                     <div className="space-y-2">
                       {order.items.map((item: Order.IOrderItem, index: number) => (
                         <div key={index} className="flex items-center space-x-3 p-2 bg-gray-50 rounded">
-                          <div 
+                          <div
                             className="w-10 h-10 relative flex-shrink-0 rounded overflow-hidden cursor-pointer hover:opacity-80"
                             onClick={() => setSelectedImage(item.image || "/placeholder.svg")}
                           >
@@ -336,12 +335,12 @@ const OrdersPage = () => {
                           <div className="flex-1 min-w-0">
                             <h4 className="font-medium text-gray-800 text-sm truncate">{item.name}</h4>
                             <p className="text-xs text-gray-500">
-                              {item.quantity} × ₹{item.priceAtTime}
+                              {item.quantity} × Rs.{item.priceAtTime}
                             </p>
                           </div>
                           <div className="text-right">
                             <span className="font-medium text-gray-800 text-sm">
-                              ₹{(item.priceAtTime * item.quantity).toFixed(2)}
+                              Rs.{(item.priceAtTime * item.quantity).toFixed(2)}
                             </span>
                           </div>
                         </div>
@@ -368,7 +367,7 @@ const OrdersPage = () => {
                     <div className="text-right">
                       <p className="text-sm text-gray-500">Payment Method: {order.paymentMethod}</p>
                       <div className="text-sm text-gray-500">Total</div>
-                      <div className="font-semibold text-gray-800">₹{order.totalAmount.toFixed(2)}</div>
+                      <div className="font-semibold text-gray-800">Rs.{order.totalAmount.toFixed(2)}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -382,7 +381,7 @@ const OrdersPage = () => {
                   variant="outline"
                   size="sm"
                   disabled={!pagination.hasPrev}
-                  onClick={() => {/* TODO: Handle page change */}}
+                  onClick={() => {/* TODO: Handle page change */ }}
                   className="cursor-pointer"
                 >
                   Previous
@@ -394,7 +393,7 @@ const OrdersPage = () => {
                   variant="outline"
                   size="sm"
                   disabled={!pagination.hasNext}
-                  onClick={() => {/* TODO: Handle page change */}}
+                  onClick={() => {/* TODO: Handle page change */ }}
                   className="cursor-pointer"
                 >
                   Next
@@ -406,20 +405,20 @@ const OrdersPage = () => {
           <div className="text-center py-12">
             <Package className="h-16 w-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-800 mb-2">
-              {activeTab === 'all' 
+              {activeTab === 'all'
                 ? "No Orders Found"
                 : `No ${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Orders`
               }
             </h3>
             <p className="text-gray-500 mb-4">
-              {activeTab === 'all' 
+              {activeTab === 'all'
                 ? "You haven't placed any orders yet."
                 : `You don't have any ${activeTab} orders at the moment.`
               }
             </p>
             {activeTab !== 'all' && (
-              <Button 
-                onClick={() => setActiveTab('all')} 
+              <Button
+                onClick={() => setActiveTab('all')}
                 variant="outline"
                 className="cursor-pointer"
               >

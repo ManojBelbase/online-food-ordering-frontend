@@ -34,9 +34,8 @@ export const FoodItemCard = ({ item, restaurantId, onImageClick }: FoodItemCardP
           {/* Veg/Non-veg indicator overlay */}
           <div className="absolute top-3 left-3">
             <div
-              className={`w-6 h-6 border-2 flex items-center justify-center rounded-full bg-white/90 ${
-                item.isVeg ? "border-green-500" : "border-red-500"
-              }`}
+              className={`w-6 h-6 border-2 flex items-center justify-center rounded-full bg-white/90 ${item.isVeg ? "border-green-500" : "border-red-500"
+                }`}
             >
               {item.isVeg ? (
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
@@ -59,7 +58,7 @@ export const FoodItemCard = ({ item, restaurantId, onImageClick }: FoodItemCardP
             </p>
 
             <div className="text-2xl font-bold text-orange-600 mb-6">
-              ₹{item.price}
+              Rs.{item.price}
             </div>
           </div>
 

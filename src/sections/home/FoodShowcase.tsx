@@ -91,7 +91,7 @@ const FoodShowcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
           <div>
-         
+
             <h2 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
               Trending Food Picks
             </h2>
@@ -139,15 +139,14 @@ const FoodShowcase = () => {
                     )}
                     <div className="absolute top-3 left-3 flex items-center gap-2">
                       <Badge className="bg-white/90 text-orange-600">
-                        ₹{item.price}
+                        Rs.{item.price}
                       </Badge>
                       <Badge
                         variant="outline"
-                        className={`text-xs ${
-                          item.isVeg
+                        className={`text-xs ${item.isVeg
                             ? "border-green-200 text-green-600"
                             : "border-red-200 text-red-600"
-                        }`}
+                          }`}
                       >
                         {item.isVeg ? "Veg" : "Non-Veg"}
                       </Badge>

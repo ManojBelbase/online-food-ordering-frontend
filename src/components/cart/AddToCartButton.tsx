@@ -36,7 +36,7 @@ export const AddToCartButton = ({ foodItem }: AddToCartButtonProps) => {
   const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
-  
+
   const addToCartMutation = useAddToCart();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const currentRestaurantId = useSelector(selectCartRestaurantId);
@@ -71,8 +71,8 @@ export const AddToCartButton = ({ foodItem }: AddToCartButtonProps) => {
 
   const handleAddToCartClick = () => {
     if (!isAuthenticated) {
-      toaster({ 
-        message: "Please login to add items to cart", 
+      toaster({
+        message: "Please login to add items to cart",
         icon: "warning",
         title: "Authentication Required"
       });
@@ -91,11 +91,10 @@ export const AddToCartButton = ({ foodItem }: AddToCartButtonProps) => {
           <Button
             onClick={handleAddToCartClick}
             disabled={addToCartMutation.isPending}
-            className={`px-6 py-2 transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 cursor-pointer ${
-              isInCart
+            className={`px-6 py-2 transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 cursor-pointer ${isInCart
                 ? "bg-green-500 hover:bg-green-600 text-white text-sm"
                 : "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-sm"
-            }`}
+              }`}
           >
             <ShoppingCart className="w-4 h-4 mr-2" />
             {isInCart ? `In Cart (${existingCartItem?.quantity || 0})` : "Add to Cart"}
@@ -123,7 +122,7 @@ export const AddToCartButton = ({ foodItem }: AddToCartButtonProps) => {
             </div>
             <div className="flex-1">
               <h4 className="font-semibold text-gray-800 text-sm">{foodItem.name}</h4>
-              <p className="text-orange-600 font-bold text-lg">₹{foodItem.price}</p>
+              <p className="text-orange-600 font-bold text-lg">Rs.{foodItem.price}</p>
             </div>
           </div>
 
@@ -175,7 +174,7 @@ export const AddToCartButton = ({ foodItem }: AddToCartButtonProps) => {
             <div className="flex justify-between items-center">
               <span className="font-medium text-gray-700">Total:</span>
               <span className="text-xl font-bold text-orange-600">
-                ₹{foodItem.price * quantity}
+                Rs.{foodItem.price * quantity}
               </span>
             </div>
           </div>

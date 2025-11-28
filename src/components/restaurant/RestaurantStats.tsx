@@ -14,7 +14,7 @@ export const RestaurantStats = ({ restaurant }: RestaurantStatsProps) => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-8 space-y-2 sm:space-y-0">
             {/* <div className="flex items-center text-sm text-gray-600">
               <Truck className="h-4 w-4 mr-2 text-green-600" />
-              <span className="font-medium">Free delivery on orders above ₹299</span>
+              <span className="font-medium">Free delivery on orders above Rs.299</span>
             </div> */}
             <div className="flex items-center text-sm text-gray-600">
               <Award className="h-4 w-4 mr-2 text-orange-500" />

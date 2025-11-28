@@ -13,7 +13,7 @@ export const CartIcon = () => {
     <Link href="/cart" className="relative group">
       <div className="relative p-2 rounded-full hover:bg-gray-100 transition-colors">
         <ShoppingCart className="w-6 h-6 text-gray-700 group-hover:text-orange-600 transition-colors" />
-        
+
         {/* Cart Badge */}
         {itemCount > 0 && (
           <div className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -29,7 +29,7 @@ export const CartIcon = () => {
             Cart ({itemCount} {itemCount === 1 ? 'item' : 'items'})
           </div>
           <div className="text-sm text-gray-600">
-            Total: ₹{totalPrice.toFixed(2)}
+            Total: Rs.{totalPrice.toFixed(2)}
           </div>
           <div className="text-xs text-orange-600 mt-1">
             Click to view cart

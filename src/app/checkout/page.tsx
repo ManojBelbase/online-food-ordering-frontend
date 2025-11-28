@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, MapPin,  CreditCard, Wallet, CheckCircle } from "lucide-react";
+import { ArrowLeft, MapPin, CreditCard, Wallet, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Leaf } from "lucide-react";
@@ -24,7 +24,7 @@ const CheckoutPage = () => {
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotalPrice);
   const restaurantId = useSelector(selectCartRestaurantId);
-  
+
   const createOrder = useCreateOrder();
 
   const [deliveryAddress, setDeliveryAddress] = useState("");
@@ -69,11 +69,11 @@ const CheckoutPage = () => {
       return;
     }
 
-          // For Khalti payments, don't place order here - let KhaltiPaymentBox handle it
-      if (paymentMethod === "Khalti") {
-        toaster({ message: "Please complete the Khalti payment form above", icon: "warning" });
-        return;
-      }
+    // For Khalti payments, don't place order here - let KhaltiPaymentBox handle it
+    if (paymentMethod === "Khalti") {
+      toaster({ message: "Please complete the Khalti payment form above", icon: "warning" });
+      return;
+    }
 
     // Filter out items without foodItemId and validate
     const validItems = cartItems.filter((item: Cart.ICartItem) => {
@@ -297,7 +297,7 @@ const CheckoutPage = () => {
                         Your delivery information is complete. Click below to proceed with Khalti payment.
                       </p>
                     </div>
-                    
+
                     <Button
                       onClick={async () => {
                         // First place the order
@@ -311,17 +311,17 @@ const CheckoutPage = () => {
                           return;
                         }
 
-                                                 const orderData = {
-                           restaurantId,
-                           items: validItems.map((item: Cart.ICartItem) => ({
-                             foodItemId: typeof item.foodItemId === 'string' ? item.foodItemId : item.foodItemId._id,
-                             quantity: item.quantity,
-                             notes: item.notes || "",
-                           })),
-                           deliveryAddress: deliveryAddress.trim(),
-                           paymentMethod: "Khalti" as const,
-                           contactPhone: contactPhone.trim(),
-                         };
+                        const orderData = {
+                          restaurantId,
+                          items: validItems.map((item: Cart.ICartItem) => ({
+                            foodItemId: typeof item.foodItemId === 'string' ? item.foodItemId : item.foodItemId._id,
+                            quantity: item.quantity,
+                            notes: item.notes || "",
+                          })),
+                          deliveryAddress: deliveryAddress.trim(),
+                          paymentMethod: "Khalti" as const,
+                          contactPhone: contactPhone.trim(),
+                        };
 
                         console.log("Placing order before Khalti payment:", orderData);
 
@@ -339,10 +339,10 @@ const CheckoutPage = () => {
                                 purchase_order_name: `Food Order - ${khaltiOrderId}`,
                                 return_url: `${window.location.origin}/success`,
                                 website_url: window.location.origin,
-                                customer_info: { 
-                                  name: "Customer", 
-                                  email: "customer@example.com", 
-                                  phone: contactPhone.trim() 
+                                customer_info: {
+                                  name: "Customer",
+                                  email: "customer@example.com",
+                                  phone: contactPhone.trim()
                                 }
                               }
                             });
@@ -351,9 +351,9 @@ const CheckoutPage = () => {
                               window.location.href = response.data.payment_url;
                             }
                           }
-                                                 } catch {
-                           toaster({ message: "Failed to create order. Please try again.", icon: "error" });
-                         }
+                        } catch {
+                          toaster({ message: "Failed to create order. Please try again.", icon: "error" });
+                        }
                       }}
                       disabled={createOrder.isPending}
                       className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 font-semibold"
@@ -409,7 +409,7 @@ const CheckoutPage = () => {
                       <div className="flex-1 min-w-0">
                         <h4 className="font-medium text-gray-800 truncate">{item.name}</h4>
                         <p className="text-sm text-gray-500">
-                          Qty: {item.quantity} × ₹{item.priceAtTime}
+                          Qty: {item.quantity} × Rs.{item.priceAtTime}
                         </p>
                         {item.notes && (
                           <p className="text-xs text-gray-400 italic">Note: {item.notes}</p>
@@ -417,7 +417,7 @@ const CheckoutPage = () => {
                       </div>
                       <div className="text-right">
                         <span className="font-semibold text-gray-800">
-                          ₹{(item.priceAtTime * item.quantity).toFixed(2)}
+                          Rs.{(item.priceAtTime * item.quantity).toFixed(2)}
                         </span>
                       </div>
                     </div>
@@ -437,14 +437,14 @@ const CheckoutPage = () => {
                 <div className="space-y-4">
                   <div className="flex justify-between text-gray-600">
                     <span>Subtotal ({cartItems.length} items)</span>
-                    <span>₹{totalPrice.toFixed(2)}</span>
+                    <span>Rs.{totalPrice.toFixed(2)}</span>
                   </div>
                   <hr className="border-gray-200" />
                   <div className="flex justify-between text-lg font-bold text-gray-800">
                     <span>Total</span>
-                    <span>₹{totalPrice.toFixed(2)}</span>
+                    <span>Rs.{totalPrice.toFixed(2)}</span>
                   </div>
-                
+
 
                   <Button
                     onClick={handlePlaceOrder}

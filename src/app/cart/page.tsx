@@ -153,7 +153,7 @@ const CartPage = () => {
                         <div className="flex justify-between items-start mb-3">
                           <h3 className="font-semibold text-gray-800 truncate text-lg">{item.name}</h3>
                           <span className="text-xl font-bold text-orange-600">
-                            ₹{item.priceAtTime}
+                            Rs.{item.priceAtTime}
                           </span>
                         </div>
 
@@ -185,7 +185,7 @@ const CartPage = () => {
                         {/* Item Total and Actions */}
                         <div className="flex justify-between items-center">
                           <span className="text-lg font-semibold text-gray-700">
-                            Total: ₹{(item.priceAtTime * item.quantity).toFixed(2)}
+                            Total: Rs.{(item.priceAtTime * item.quantity).toFixed(2)}
                           </span>
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
@@ -233,12 +233,12 @@ const CartPage = () => {
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal ({cartItems.length} items)</span>
-                  <span>₹{totalPrice.toFixed(2)}</span>
+                  <span>Rs.{totalPrice.toFixed(2)}</span>
                 </div>
                 <hr className="border-gray-200" />
                 <div className="flex justify-between text-xl font-bold text-gray-800">
                   <span>Total</span>
-                  <span>₹{totalPrice.toFixed(2)}</span>
+                  <span>Rs.{totalPrice.toFixed(2)}</span>
                 </div>
 
               </div>

@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <div>
-      <section className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-16">
+      <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -64,7 +64,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     type="submit"
                     size="lg"
                     className="bg-white font-medium text-orange-600 hover:bg-gray-100 h-12 px-8 min-w-[120px]"
-                    disabled={!query.trim() || isSearching}
+                    // disabled={!query.trim() || isSearching}
                     data-testid="global-search-submit"
                   >
                     {isSearching ? (
@@ -84,7 +84,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       size="lg"
                       className="h-12 px-6 bg-transparent text-white border-white/60 hover:bg-white/10"
                       onClick={onClear}
-                      disabled={isSearching}
+                      // disabled={isSearching}
                       data-testid="global-search-clear"
                     >
                       <XCircle className="h-4 w-4" />

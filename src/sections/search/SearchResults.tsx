@@ -111,7 +111,7 @@ const SearchResults = ({
               <Link
                 key={`${item.foodId}-${index}`}
                 href={`/food/${item.foodId}`}
-               
+
                 className="group block"
               >
                 <Card className="bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
@@ -132,7 +132,7 @@ const SearchResults = ({
                         </div>
                       )}
                       <Badge className="absolute top-3 left-3 bg-orange-600 text-white">
-                        ₹{item.price}
+                        Rs.{item.price}
                       </Badge>
                     </div>
 

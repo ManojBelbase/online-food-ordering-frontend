@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-2xl font-bold text-orange-600 mb-4">
-                FoodHub
+                BhojanNepal
               </h3>
               <p className="text-gray-400">
                 Your favorite food delivery platform. Fast, reliable, and
