@@ -113,7 +113,7 @@ export default function NearbyRestaurants() {
               href={`/restaurant/${restaurant._id}`}
               className="block"
             >
-              <Card className="overflow-hidden bg-white shadow-xs hover:shadow-xs transition-all duration-300 group cursor-pointer">
+              <Card className="overflow-hidden bg-white shadow-xs hover:shadow-xs transition-all duration-300 group cursor-pointer p-0 m-0">
                 <div className="relative">
                   <Image
                     src={restaurant.logo}

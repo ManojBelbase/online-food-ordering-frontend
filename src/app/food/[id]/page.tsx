@@ -36,12 +36,6 @@ type RestaurantResponse =
   | Restaurant.IRestaurant
   | { restaurant: Restaurant.IRestaurant };
 
-const formatPrice = (value: number) =>
-  new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(value);
 
 const FoodDetailPage = () => {
   const params = useParams<{ id: string }>();
@@ -90,14 +84,13 @@ const FoodDetailPage = () => {
 
   const createdAt = food?.createdAt
     ? new Date(food.createdAt).toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
     : null;
 
   const tags = food?.tags ?? [];
-  const priceLabel = food ? formatPrice(food.price) : null;
 
   const renderLoadingState = () => (
     <div className="flex flex-col items-center justify-center py-20 text-gray-500 gap-4">
@@ -200,8 +193,8 @@ const FoodDetailPage = () => {
                   {food.name}
                 </h1>
 
-                {priceLabel && (
-                  <p className="text-xl font-semibold">{priceLabel}</p>
+                {food.price && (
+                  <p className="text-xl font-semibold">Rs. {food.price}</p>
                 )}
               </div>
             </div>
@@ -272,7 +265,7 @@ const FoodDetailPage = () => {
                         Ready to order?
                       </p>
                       <p className="text-2xl font-semibold text-gray-900">
-                        {priceLabel}
+                        Rs.{food.price}
                       </p>
                     </div>
 
