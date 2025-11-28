@@ -16,13 +16,12 @@ const CartPage = () => {
   const { isAuthenticated } = useAuthGuard();
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotalPrice);
-  
+
   const updateCartItem = useUpdateCartItem();
   const removeFromCart = useRemoveFromCart();
   const clearCart = useClearCart();
   const { selectedImage, openImageModal, closeImageModal } = useImagePreview();
 
-  // Helper function to get item ID
   const getItemId = (item: Cart.ICartItem): string => {
     return typeof item.foodItemId === 'string' ? item.foodItemId : item?.foodItemId?._id;
   };
@@ -127,10 +126,10 @@ const CartPage = () => {
               <div className="p-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-6">Cart Items</h2>
                 <div className="space-y-6">
-                  {cartItems?.map((item:Cart.ICartItem) => (
+                  {cartItems?.map((item: Cart.ICartItem) => (
                     <div key={typeof item.foodItemId === 'string' ? item.foodItemId : item?.foodItemId?._id} className="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200">
                       {/* Item Image */}
-                      <div 
+                      <div
                         className="w-24 h-24 relative flex-shrink-0 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200"
                         onClick={() => openImageModal(item.image || "/placeholder.svg")}
                       >
@@ -230,7 +229,7 @@ const CartPage = () => {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sticky top-8">
               <h2 className="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal ({cartItems.length} items)</span>
@@ -241,7 +240,7 @@ const CartPage = () => {
                   <span>Total</span>
                   <span>₹{totalPrice.toFixed(2)}</span>
                 </div>
-             
+
               </div>
 
               <Link href="/checkout">
