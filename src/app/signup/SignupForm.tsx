@@ -121,7 +121,7 @@ export default function SignupForm() {
             <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
             <Input
               id="name"
-              placeholder="Jivan Aryal"
+              placeholder="John Doe"
               className="pl-10"
               {...register("name")}
             />

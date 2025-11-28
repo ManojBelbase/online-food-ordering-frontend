@@ -57,7 +57,6 @@ export default function LoginForm() {
   }
 
   const onSubmit = async (data: LoginFormData) => {
-    console.log(data);
     const result = await dispatch(loginUser(data));
 
     if (loginUser.rejected.match(result)) {

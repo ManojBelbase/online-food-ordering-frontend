@@ -6,7 +6,7 @@ import { selectIsAuthenticated } from "@/features/auth/selectors";
 
 export const useCart = () => {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
-  
+
   return useQuery({
     queryKey: ["cart"],
     queryFn: cartApi.getCart,
@@ -24,10 +24,10 @@ export const useAddToCart = () => {
     onSuccess: (data) => {
       // Update cart cache
       queryClient.setQueryData(["cart"], data.cart);
-      
+
       // Invalidate related queries
       queryClient.invalidateQueries({ queryKey: ["cart"] });
-      
+
       toaster({ message: "Item added to cart successfully!", icon: "success" });
     },
     onError: (error: unknown) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const KHALTI_CONFIG = {
-  baseUrl: "https://a.khalti.com/api/v2", // Sandbox environment
+  baseUrl: "https://a.khalti.com/api/v2",
   secretKey: process.env.KHALTI_SECRET_KEY ?? "",
 } as const;
 

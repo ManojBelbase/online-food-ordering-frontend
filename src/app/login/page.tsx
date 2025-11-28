@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card";
 import { Utensils } from "lucide-react";
 
-// Dynamically import Redux-related components to avoid SSR issues
 const LoginForm = dynamic(() => import("./LoginForm"), {
   ssr: false,
   loading: () => (

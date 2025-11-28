@@ -16,7 +16,6 @@ const persistConfig = {
   key: "root",
   storage,
   whitelist: ["auth"],
-  // Skip persistence during SSR
   skip: typeof window === "undefined",
 };
 
