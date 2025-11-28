@@ -49,7 +49,7 @@ export default function NearbyRestaurants() {
     queryKey: ["nearby-restaurants", location],
     queryFn: () =>
       fetchNearbyRestaurants(location?.latitude ?? 0, location?.longitude ?? 0),
-     
+
   });
 
   if (isLoading) {
@@ -97,7 +97,7 @@ export default function NearbyRestaurants() {
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="mb-10">
+        <div className="mb-4 sm:mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
             Nearby Restaurants
           </h2>
@@ -106,14 +106,14 @@ export default function NearbyRestaurants() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
           {data.map((restaurant: Model.IRestaurant) => (
             <Link
               key={restaurant._id}
               href={`/restaurant/${restaurant._id}`}
               className="block"
             >
-              <Card className="overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
+              <Card className="overflow-hidden bg-white shadow-xs hover:shadow-xs transition-all duration-300 group cursor-pointer">
                 <div className="relative">
                   <Image
                     src={restaurant.logo}

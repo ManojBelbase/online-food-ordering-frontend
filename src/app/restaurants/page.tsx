@@ -89,14 +89,14 @@ const RestaurantsPage = () => {
         {!isLoading && !error && !restaurants?.length && <EmptyState />}
 
         {!isLoading && !error && restaurants?.length ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 2xl:grid-cols-4 gap-2 sm:gap-4">
             {restaurants.map((restaurant: UI.Restaurant) => (
               <Link
                 key={restaurant._id}
                 href={`/restaurant/${restaurant._id}`}
                 className="block group"
               >
-                <Card className="overflow-hidden bg-white border border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all duration-200">
+                <Card className="overflow-hidden bg-white border border-gray-100 hover:border-orange-200 hover:shadow-xs transition-all duration-200 p-0 m-0">
                   <div className="relative h-40 w-full overflow-hidden bg-gray-100">
                     <Image
                       src={
@@ -105,7 +105,7 @@ const RestaurantsPage = () => {
                       }
                       alt={restaurant.restaurantName}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-101 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 400px"
                       unoptimized
                     />

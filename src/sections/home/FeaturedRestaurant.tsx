@@ -45,9 +45,9 @@ const FeaturedRestaurants = () => {
 
   if (isLoading) {
     return (
-      <section className="py-8 sm:py-16 bg-gray-50">
+      <section className=" bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 sm:mb-6">
             <div className="space-y-2 mb-4 sm:mb-0">
               <div className="w-40 sm:w-48 h-6 sm:h-8 bg-gray-300 rounded animate-pulse" />
               <div className="w-48 sm:w-64 h-3 sm:h-4 bg-gray-200 rounded animate-pulse" />
@@ -78,7 +78,7 @@ const FeaturedRestaurants = () => {
     return (
       <section className="py-8 sm:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center py-8 sm:py-12">
+          <div className="text-center py-6 sm:py-6">
             <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <Utensils className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
             </div>
@@ -97,7 +97,7 @@ const FeaturedRestaurants = () => {
   return (
     <section className="py-8 sm:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
           <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-0">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
               Featured Restaurants
@@ -115,14 +115,14 @@ const FeaturedRestaurants = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-2 lg:gap-5">
           {restaurants.slice(0, 6).map((restaurant: UI.Restaurant) => (
             <Link
               key={restaurant._id}
               href={`/restaurant/${restaurant._id}`}
               className="group block"
             >
-              <Card className="overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 border-0">
+              <Card className="overflow-hidden bg-white shadow-xs hover:shadow-xs transition-all duration-300 group-hover:-translate-y-1 border-0 m-0 p-0">
                 <div className="relative overflow-hidden">
                   <Image
                     src={
@@ -130,7 +130,7 @@ const FeaturedRestaurants = () => {
                       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop"
                     }
                     alt={restaurant.restaurantName}
-                    className="w-full h-32 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-32 sm:h-48 object-cover group-hover:scale-101 transition-transform duration-500"
                     width={400}
                     height={300}
                     unoptimized
@@ -144,7 +144,7 @@ const FeaturedRestaurants = () => {
                 </div>
 
                 <CardContent className="p-3 sm:p-6">
-                  <div className="space-y-2 sm:space-y-3">
+                  <div className="">
                     <div>
                       <h3 className="font-bold capitalize text-sm sm:text-lg lg:text-xl text-gray-900 mb-1 group-hover:text-orange-600 transition-colors duration-200 line-clamp-1">
                         {restaurant.restaurantName}

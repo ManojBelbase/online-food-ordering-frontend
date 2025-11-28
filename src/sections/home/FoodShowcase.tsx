@@ -87,9 +87,9 @@ const FoodShowcase = () => {
   );
 
   return (
-    <section className="py-12 sm:py-16 bg-white">
+    <section className=" bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 sm:mb-6">
           <div>
 
             <h2 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
@@ -116,11 +116,11 @@ const FoodShowcase = () => {
           <EmptyState />
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
               {items.map((item) => (
                 <Card
                   key={item.food_id}
-                  className="overflow-hidden bg-white border border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all duration-200"
+                  className="overflow-hidden bg-white border border-gray-100 hover:border-orange-200 hover:shadow-xs transition-all duration-200 m-0 p-0"
                 >
                   <div className="relative h-40 sm:h-48 bg-gray-100 overflow-hidden">
                     {item.image ? (
@@ -129,7 +129,7 @@ const FoodShowcase = () => {
                         alt={item.food_name}
                         fill
                         sizes="(max-width: 768px) 100vw, 400px"
-                        className="object-cover hover:scale-105 transition-transform duration-500"
+                        className="object-cover hover:scale-110 transition-transform duration-500"
                         unoptimized
                       />
                     ) : (
@@ -144,8 +144,8 @@ const FoodShowcase = () => {
                       <Badge
                         variant="outline"
                         className={`text-xs ${item.isVeg
-                            ? "border-green-200 text-green-600"
-                            : "border-red-200 text-red-600"
+                          ? "border-green-200 bg-green-600 text-white"
+                          : "border-red-200 bg-red-600 text-white"
                           }`}
                       >
                         {item.isVeg ? "Veg" : "Non-Veg"}
@@ -153,7 +153,7 @@ const FoodShowcase = () => {
                     </div>
                   </div>
 
-                  <CardContent className="p-6 space-y-4">
+                  <CardContent className="p-4 space-y-2 sm:space-y-3">
                     <div className="space-y-2">
                       <Link
                         href={`/food/${item.food_id}`}
