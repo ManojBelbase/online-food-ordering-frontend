@@ -1,4 +1,4 @@
-import { User, Lock, Heart, Map, LogOut } from "lucide-react";
+import { User, Lock, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { selectUser } from "@/features/auth/selectors";
