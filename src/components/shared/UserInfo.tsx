@@ -30,7 +30,7 @@ const UserInfo = () => {
         >
           <Lock className="w-4 h-4" /> Order History
         </Link>
-        <Link
+        {/* <Link
           href="/favourites"
           className="flex items-center gap-2 text-gray-700 hover:text-orange-600"
         >
@@ -41,7 +41,7 @@ const UserInfo = () => {
           className="flex items-center gap-2 text-gray-700 hover:text-orange-600"
         >
           <Map className="w-4 h-4" /> Saved Addresses
-        </Link>
+        </Link> */}
       </div>
       <hr className="my-3" />
       <Link

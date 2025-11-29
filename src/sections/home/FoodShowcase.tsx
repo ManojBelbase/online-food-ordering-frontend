@@ -199,7 +199,7 @@ const FoodShowcase = () => {
                           />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-900">
+                          <p className="text-sm capitalize font-medium text-gray-900">
                             {item.restaurant.name}
                           </p>
                           <p className="text-xs text-gray-500 flex items-center gap-1">

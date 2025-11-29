@@ -25,6 +25,7 @@
     "framer-motion": "^12.23.12",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.525.0",
+    "miti-pariwartan": "^1.6.4",
     "next": "^15.3.5",
     "next-pwa": "^5.6.0",
     "react": "^19.0.0",

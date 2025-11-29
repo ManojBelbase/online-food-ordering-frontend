@@ -9,8 +9,7 @@ const withPwaPlugin = withPWA({
 });
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false, // ✅ disables double rendering in dev
-  // swcMinify: true,
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
@@ -25,8 +24,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverComponentsHmrCache: true, // ✅ cache server component fetches in dev
-    // Optional: If you use libraries with barrel files (like `@mui/icons-material`)
-    // optimizePackageImports: ['@mui/icons-material'],
   },
   logging: {
     fetches: {
