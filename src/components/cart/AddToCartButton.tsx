@@ -91,7 +91,7 @@ export const AddToCartButton = ({ foodItem }: AddToCartButtonProps) => {
           <Button
             onClick={handleAddToCartClick}
             disabled={addToCartMutation.isPending}
-            className={`px-6 py-2 transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 cursor-pointer ${isInCart
+            className={`px-6 py-2 transition-all duration-200 font-medium shadow-xs hover:shadow-xs transform hover:scale-105 active:scale-95 cursor-pointer ${isInCart
               ? "bg-green-500 hover:bg-green-600 text-white text-sm"
               : "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-sm"
               }`}

@@ -119,10 +119,10 @@ const CartPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 sm:gap-4">
           {/* Cart Items */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden">
               <div className="p-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-6">Cart Items</h2>
                 <div className="space-y-6">
@@ -227,7 +227,7 @@ const CartPage = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sticky top-8">
+            <div className="bg-white rounded-2xl shadow-xs border border-gray-100 p-6 sticky top-8">
               <h2 className="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
 
               <div className="space-y-4 mb-6">
