@@ -28,7 +28,6 @@ export const RestaurantSidebar = ({
   isMobileMenuOpen,
   onMobileMenuToggle,
 }: RestaurantSidebarProps) => {
-  // Filter food items based on search and veg filter
   const filterFoodItems = (items: Restaurant.IFoodItem[]) => {
     return items.filter((item) => {
       const matchesSearch =
@@ -55,9 +54,8 @@ export const RestaurantSidebar = ({
       </div>
 
       {/* Left Categories Sidebar */}
-      <div className={`lg:w-80 bg-white lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:border-r ${
-        isMobileMenuOpen ? 'block' : 'hidden lg:block'
-      }`}>
+      <div className={`lg:w-80 bg-white lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:border-r ${isMobileMenuOpen ? 'block' : 'hidden lg:block'
+        }`}>
         <div className="p-6">
           {/* Search and Filters */}
           <div className="mb-6 space-y-4">
@@ -119,13 +117,12 @@ export const RestaurantSidebar = ({
                     key={category._id}
                     onClick={() => {
                       onCategoryClick(category._id)
-                      onMobileMenuToggle() // Close mobile menu on category click
+                      onMobileMenuToggle()
                     }}
-                    className={`w-full text-left p-4 rounded-lg transition-all duration-200 cursor-pointer ${
-                      activeCategory === category._id
-                        ? "bg-orange-50 border-l-4 border-orange-500 text-orange-700"
-                        : "hover:bg-gray-50 text-gray-700"
-                    }`}
+                    className={`w-full text-left p-4 rounded-lg transition-all duration-200 cursor-pointer ${activeCategory === category._id
+                      ? "bg-orange-50 border-l-4 border-orange-500 text-orange-700"
+                      : "hover:bg-gray-50 text-gray-700"
+                      }`}
                   >
                     <div className="flex items-center justify-between">
                       <div>

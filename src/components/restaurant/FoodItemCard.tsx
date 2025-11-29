@@ -20,15 +20,15 @@ interface FoodItemCardProps {
 
 export const FoodItemCard = ({ item, restaurantId, onImageClick }: FoodItemCardProps) => {
   return (
-    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+    <div className="bg-white rounded-2xl shadow-xs hover:shadow-xs transition-all duration-300 overflow-hidden border border-gray-100 group">
       <div className="flex flex-col md:flex-row">
         {/* Food Item Image */}
-        <div className="w-full md:w-48 h-48 md:h-48 relative flex-shrink-0 cursor-pointer group-hover:scale-105 transition-transform duration-300">
+        <div className="w-full md:w-48 h-48 md:h-48 relative flex-shrink-0 cursor-pointer group-hover:scale-101 transition-transform duration-300">
           <Image
             src={item.image || "/placeholder.svg?height=192&width=192&query=delicious food dish"}
             alt={item.name}
             fill
-            className="object-cover"
+            className="object-cover h-full"
             onClick={() => onImageClick(item.image || "/placeholder.svg")}
           />
           {/* Veg/Non-veg indicator overlay */}
@@ -57,23 +57,26 @@ export const FoodItemCard = ({ item, restaurantId, onImageClick }: FoodItemCardP
               {item.description}
             </p>
 
-            <div className="text-2xl font-bold text-orange-600 mb-6">
-              Rs.{item.price}
+            <div className="text-2xl flex items-center justify-between font-bold text-orange-600 ">
+              <span>
+                Rs.{item.price}
+              </span>
+              <div className="flex justify-center">
+                <AddToCartButton
+                  foodItem={{
+                    _id: item._id,
+                    name: item.name,
+                    price: item.price,
+                    image: item.image,
+                    isVeg: item.isVeg,
+                    restaurantId: restaurantId,
+                  }}
+                />
+              </div>
             </div>
           </div>
 
-          <div className="flex justify-center">
-            <AddToCartButton
-              foodItem={{
-                _id: item._id,
-                name: item.name,
-                price: item.price,
-                image: item.image,
-                isVeg: item.isVeg,
-                restaurantId: restaurantId,
-              }}
-            />
-          </div>
+
         </div>
       </div>
     </div>

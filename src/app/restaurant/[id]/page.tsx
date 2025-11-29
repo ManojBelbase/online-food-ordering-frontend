@@ -23,7 +23,7 @@ const ViewRestaurantDetails = () => {
   const contentRef = useRef<HTMLDivElement>(null)
   const categoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const { selectedImage, openImageModal, closeImageModal } = useImagePreview()
-  
+
   const restaurantStatus = useRestaurantStatus(restaurantMenu?.restaurant)
 
   // Handle scroll to update active category
@@ -112,7 +112,7 @@ const ViewRestaurantDetails = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Restaurant Hero Section */}
-      <RestaurantHero 
+      <RestaurantHero
         restaurant={restaurantMenu.restaurant}
         status={restaurantStatus}
       />
