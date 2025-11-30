@@ -11,7 +11,6 @@ const initialState: Auth.AuthState = {
   isInitialized: false,
 };
 
-// Helper function to safely access localStorage
 const safeLocalStorage = {
   setItem: (key: string, value: string) => {
     if (typeof window !== "undefined") {

@@ -32,7 +32,6 @@ const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState<"COD" | "Khalti">("COD");
   const [showKhaltiForm, setShowKhaltiForm] = useState(false);
 
-  // Show loading while checking authentication
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center">
@@ -106,7 +105,6 @@ const CheckoutPage = () => {
 
     createOrder.mutate(orderData, {
       onSuccess: () => {
-        // Redirect to orders page or success page
         router.push("/orders");
       }
     });
@@ -134,7 +132,6 @@ const CheckoutPage = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Checkout Form */}
           <div className="lg:col-span-2 space-y-6">
             {/* Delivery Information */}
             <Card>

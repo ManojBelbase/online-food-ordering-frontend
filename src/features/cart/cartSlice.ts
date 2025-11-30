@@ -17,7 +17,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     setCart: (state, action: PayloadAction<Cart.ICart>) => {
-      console.log("cartSlice - setCart called with:", action.payload);
       state.cart = action.payload;
       state.error = null;
     },
@@ -36,12 +35,12 @@ const cartSlice = createSlice({
       if (state.cart) {
         const { itemId, quantity, notes } = action.payload;
         const itemIndex = state.cart.items.findIndex((item: Cart.ICartItem) => {
-          const itemIdToCompare = typeof item.foodItemId === 'string' 
-            ? item.foodItemId 
+          const itemIdToCompare = typeof item.foodItemId === 'string'
+            ? item.foodItemId
             : item.foodItemId._id;
           return itemIdToCompare === itemId;
         });
-        
+
         if (itemIndex !== -1) {
           state.cart.items[itemIndex].quantity = quantity;
           if (notes !== undefined) {
@@ -53,8 +52,8 @@ const cartSlice = createSlice({
     removeCartItem: (state, action: PayloadAction<string>) => {
       if (state.cart) {
         state.cart.items = state.cart.items.filter((item: Cart.ICartItem) => {
-          const itemIdToCompare = typeof item.foodItemId === 'string' 
-            ? item.foodItemId 
+          const itemIdToCompare = typeof item.foodItemId === 'string'
+            ? item.foodItemId
             : item.foodItemId._id;
           return itemIdToCompare !== action.payload;
         });

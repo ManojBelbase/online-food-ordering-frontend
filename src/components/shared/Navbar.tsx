@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo and Location */}
           <div className="flex items-center space-x-6">
-            <Link href="/" className="text-2xl font-bold text-orange-600 hover:text-orange-700 transition-colors cursor-pointer">
+            <Link href="/" className="tExt-lg sm:text-2xl font-bold text-orange-600 hover:text-orange-700 transition-colors cursor-pointer">
               BhojanNepal
             </Link>
             {/* <div className="hidden lg:flex items-center space-x-2 text-sm text-gray-600 bg-gray-50 px-4 py-2 rounded-full border border-gray-200">
@@ -107,21 +107,15 @@ const Navbar = () => {
               className="p-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-200 cursor-pointer"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6" />
               ) : (
-                <MenuIcon className="h-6 w-6" />
+                <MenuIcon className="h-5 w-5 sm:h-6 sm:w-6" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Location Bar */}
-        {/* <div className="lg:hidden pb-3">
-          <div className="flex items-center space-x-2 text-sm text-gray-600 bg-gray-50 px-3 py-2 rounded-lg border border-gray-200">
-            <MapPin className="h-4 w-4 text-orange-500" />
-            <span className="font-medium">Deliver to: Kathmandu, Nepal</span>
-          </div>
-        </div> */}
+
       </div>
 
       {/* Mobile Menu */}

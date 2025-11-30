@@ -51,7 +51,6 @@ const OrdersPage = () => {
   const { isAuthenticated } = useAuthGuard();
   const [activeTab, setActiveTab] = useState<'all' | 'pending' | 'accepted' | 'preparing' | 'ready' | 'completed' | 'cancelled'>('all');
 
-  // Convert tab to API status parameter
   const getStatusFilter = (tab: string) => {
     switch (tab) {
       case 'pending':
@@ -67,7 +66,7 @@ const OrdersPage = () => {
       case 'cancelled':
         return 'cancelled';
       default:
-        return undefined; // 'all' means no status filter
+        return undefined;
     }
   };
 
@@ -76,7 +75,6 @@ const OrdersPage = () => {
     status: getStatusFilter(activeTab)
   });
 
-  // Get order counts from backend
   const { data: orderCountsResponse } = useUserOrderCounts();
 
   const orders = useMemo(() => {
@@ -138,19 +136,17 @@ const OrdersPage = () => {
       order && order.orderStatus && activeStatuses.includes(order.orderStatus)
     );
 
-    // Only auto-refresh if there are active orders
     if (hasActiveOrders) {
       const interval = setInterval(() => {
         if (!isLoading) {
           refetch();
         }
-      }, 120000); // 2 minutes
+      }, 120000);
 
       return () => clearInterval(interval);
     }
   }, [refetch, isLoading, orders, orderCountsResponse]);
 
-  // Show loading while checking authentication
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -257,8 +253,8 @@ const OrdersPage = () => {
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === tab.key
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
               >
                 {tab.label}

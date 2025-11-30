@@ -4,7 +4,6 @@ import { createSelector } from "@reduxjs/toolkit";
 export const selectCart = createSelector(
   [(state: RootState) => state.cart.cart],
   (cart) => {
-    console.log("selectCart called with cart:", cart);
     return cart;
   }
 );
@@ -14,7 +13,6 @@ export const selectCartError = (state: RootState) => state.cart.error;
 export const selectCartItems = createSelector(
   [(state: RootState) => state.cart.cart?.items],
   (items) => {
-    console.log("selectCartItems called with items:", items);
     return items || [];
   }
 );
@@ -43,9 +41,8 @@ export const selectCartItemById = createSelector(
   [selectCartItems, (_state: RootState, itemId: string) => itemId],
   (items, itemId) => {
     return items.find((item: Cart.ICartItem) => {
-      // Handle both string ID and object with _id
-      const itemIdToCompare = typeof item.foodItemId === 'string' 
-        ? item.foodItemId 
+      const itemIdToCompare = typeof item.foodItemId === 'string'
+        ? item.foodItemId
         : item.foodItemId?._id;
       return itemIdToCompare === itemId;
     });
