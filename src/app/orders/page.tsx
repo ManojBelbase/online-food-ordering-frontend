@@ -203,7 +203,7 @@ const OrdersPage = () => {
             You haven&apos;t placed any orders yet. Start by browsing restaurants and adding items to your cart.
           </p>
           <Link href="/restaurant">
-            <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 cursor-pointer">
+            <Button className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 cursor-pointer">
               Browse Restaurants
             </Button>
           </Link>
