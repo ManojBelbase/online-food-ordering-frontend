@@ -11,10 +11,8 @@ export default function LogoutPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Dispatch logout action
     dispatch(logout());
 
-    // Show success message
     toaster({
       title: "Logged Out",
       message: "You have been successfully logged out.",
@@ -22,7 +20,6 @@ export default function LogoutPage() {
       className: "bg-green-50",
     });
 
-    // Redirect to login page
     router.replace("/login");
   }, [dispatch, router]);
 

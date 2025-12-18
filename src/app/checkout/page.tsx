@@ -173,7 +173,6 @@ const CheckoutPage = () => {
               </CardContent>
             </Card>
 
-            {/* Payment Method - Hide when Khalti form is shown */}
             {!showKhaltiForm && (
               <Card>
                 <CardHeader>
